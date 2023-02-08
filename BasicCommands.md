@@ -1,18 +1,16 @@
-# Shell Scripting
+# Basic Commands
 
-## Basic Commands
-
-### pwd - print working directory
+## pwd - print working directory
 
 Writes the full pathname of the current working directory to the standard output.
 
-### cd - change directory
+## cd - change directory
 
 Change the current working directory.
 
 A directory is a logical section of a file system used to hold files. Directories may also contain other directories. The cd command can be used to change into a subdirectory, move back into the parent directory, move all the way back to the root directory or move to any given directory.
 
-#### Options
+### Options
 
 ```
 cd
@@ -31,19 +29,19 @@ cd -
 Will switch the user to the previous directory.
 ```
 
-### ls - list
+## ls - list
 
 List computer files and directories.
 
 When invoked without arguments, ls lists the files in the working directory. If a directory is specified, the files in that directory are listed. The arguments may contain a multiple files and directories.
 
-#### Syntax
+### Syntax
 
 ```
 ls [options] [file… | directory …]
 ```
 
-#### Options
+### Options
 
 Without options, ls displays names only. Multiple options may be combined. Common options include:
 
@@ -79,17 +77,17 @@ ls -F
 Append a "/" to directory names.
 ```
 
-### mkdir - make directory
+## mkdir - make directory
 
 Make a new directory.
 
-#### Syntax
+### Syntax
 
 ```
 mkdir [options] [directory_name]
 ```
 
-#### Options
+### Options
 
 ```
 mkdir -p
@@ -99,7 +97,7 @@ mkdir -m
 Mode, specify the octal permissions of directories created by mkdir.Commonly used to lock down temporary directories used by shell scripts.
 ```
 
-### touch
+## touch
 
 A command used to update the access date and/or modification date of a computer file or directory.
 
@@ -109,11 +107,11 @@ The touch command can be useful for quickly creating files for programs or scrip
 
 touch avoids opening, saving, and closing the file. Instead it simply updates the dates associated with the file or directory. An updated access or modification date can be important for a variety of other programs such as backup utilities or the make command-line interface programming utility. Typically these types of programs are only concerned with files which have been created or modified after the program was last run.
 
-### date – display or set date and time
+## date – display or set date and time
 
 When invoked without arguments, the date utility displays the current date and time. Otherwise, depending on the options specified, date will set the date and time or print it in a user-defined way.
 
-#### Options
+### Options
 
 ```
 date -I
@@ -136,17 +134,17 @@ Display or set the date in UTC (Coordinated Universal) time.
 Mon Feb 6 18:13:01 UTC 2023
 ```
 
-### cat - (con)catenate files
+## cat - (con)catenate files
 
 Reads files sequentially, writing them to standard output.
 
-#### Syntax
+### Syntax
 
 ```
 cat [options] [file_names]
 ```
 
-#### Options
+### Options
 
 ```
 cat -n
@@ -172,7 +170,7 @@ cat -u
 Use unbuffered I/O for stdout.
 ```
 
-### rm - remove
+## rm - remove
 
 Used to remove objects such as computer files, directories and symbolic links from file systems and also special files such as device nodes, pipes and sockets
 
@@ -180,7 +178,7 @@ Removes references to objects from the filesystem using the unlink system call.
 
 The command generally does not destroy file data, since its purpose is really merely to unlink references, and the filesystem space freed may still contain leftover data from the removed file.
 
-### Options
+## Options
 
 rm doesn't delete a directory by default.
 
@@ -201,7 +199,7 @@ rm -d
 "directory", deletes an empty directory, and only works if the specified directory is empty.
 ```
 
-### cp - copy
+## cp - copy
 
 Copying files and directories.
 
@@ -216,7 +214,7 @@ The command has three principal modes of operation. These modes are inferred fro
 - Copying entire directories to another directory
   When the program's arguments are the path names to two directories, cp copies all files in the source directory to the destination directory, creating any files or directories needed. This mode of operation requires an additional option flag, typically r, to indicate the recursive copying of directories. If the destination directory already exists, the source is copied into the destination, while a new directory is created if the destination does not exist.
 
-#### Options
+### Options
 
 ```
 cp -f
@@ -242,7 +240,7 @@ cp -R or -r
 recursive – copy directories recursively
 ```
 
-### mv - move
+## mv - move
 
 Moves one or more files or directories from one place to another.
 
@@ -250,7 +248,7 @@ If both filenames are on the same filesystem, this results in a simple file rena
 
 Using mv requires the user to have write permission for the directories the file will move between.
 
-#### Options
+### Options
 
 ```
 mv -i
@@ -260,11 +258,11 @@ mv -f
 force - overwriting the destination.
 ```
 
-### wc - word count
+## wc - word count
 
 The program reads either standard input or a list of computer files and generates one or more of the following statistics: newline count, word count, byte count.
 
-## Options
+# Options
 
 ```
 wc -c [filename, ...]
@@ -280,11 +278,11 @@ wc -w [filename, ...]
 Prints the word count
 ```
 
-### grep - global regular expression print
+## grep - global regular expression print
 
 Searching plain-text data sets for lines that match a regular expression.
 
-#### Syntax
+### Syntax
 
 ```
 grep [pattern] [file ...]
@@ -296,7 +294,7 @@ If no file arguments are specified, the standard input is used.
 cat [file] | grep [pattern]
 ```
 
-#### Options
+### Options
 
 ```
 -A num, --after-context=num
@@ -371,18 +369,18 @@ Only input lines selected against an entire fixed string or regular expression
 are considered to be matching lines.
 ```
 
-### find
+## find
 
 A command-line utility that locates files based on some user-specified criteria and either prints the pathname of each matched object or, if another action is requested, performs that action on each matched object.
 
-#### Syntax
+### Syntax
 
 ```
 find path... [operand_expression...]
 ex: find . -name filename
 ```
 
-#### Options
+### Options
 
 -name [patter]
 find file by name.
@@ -409,3 +407,64 @@ Similarly if n is followed by a scale indicator then the file's size is compared
              G       gigabytes (1024 megabytes)
              T       terabytes (1024 gigabytes)
              P       petabytes (1024 terabytes
+
+## chmod – change file modes or Access Control Lists
+
+The who symbols 'u', 'g', and 'o' specify the user, group, and other parts of the mode bits, respectively. The who symbol 'a' is equivalent to 'ugo'.
+
+### Options
+
+#### Symbols
+
+The perm symbols represent the portions of the mode bits as follows:
+
+```
+- r
+  The read bits.
+- w
+  The write bits.
+- x
+  The execute/search bits.
+- s
+  The set-user-ID-on-execution and set-group-ID-on-execution bits.
+- t
+  The sticky bit.
+- u
+  The user permission bits in the original mode of the file.
+- g
+  The group permission bits in the original mode of the file.
+- o
+  The other permission bits in the original mode of the file.
+```
+
+Operations with the perm symbol 'x' are only meaningful in conjunction with the op symbols, and are ignored in all other cases.
+
+The op symbols represent the operation performed, as follows:
+
+```
+- "+"
+  Add
+- "-"
+  Remove
+```
+
+#### Numbers
+
+Diferent perms have diferent values.
+r = 4
+w = 2
+x = 1
+
+The sum and position determine file perms.
+
+Ex:
+
+We give read and write access to users.
+u has rw that is 4 + 2 = 6
+We give group and others only readaccess.
+g has r that is 4
+o has r that is 4
+
+So:
+
+chmod 644 filename.
