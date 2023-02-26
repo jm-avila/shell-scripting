@@ -118,3 +118,14 @@ Other operands:
     ```
 
 Alphabetical Comparison of string:
+
+- [[$STR1 > $STR2]]
+- [[$STR1 < $STR2]]
+
+Wildcards
+
+- [[$STR1 == string-with-wildcards]]
+
+Regular Expressions
+
+- [[$STR1 =~ $regex]]
