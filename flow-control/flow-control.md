@@ -122,9 +122,39 @@ Alphabetical Comparison of string:
 - [[$STR1 > $STR2]]
 - [[$STR1 < $STR2]]
 
-Wildcards
+### Wildcards (globbing patterns)
 
-- [[$STR1 == string-with-wildcards]]
+| Symbol | Description                              | Example                 | Example Matches                              |
+| ------ | ---------------------------------------- | ----------------------- | -------------------------------------------- |
+| ?      | Single Character                         | hel?                    | help, hell, hel1 ...                         |
+| \*     | Any number of characters, including zero | ca\*                    | ca, car, carpet, carpenter ...               |
+| []     | Single character from range              | file[0-2] <br> [hd]ello | file0, file1, file2 <br> hello or dello      |
+| {}     | Comma separated terms                    | {_.txt, _.pdf}          | hello.txt, doc.txt, source.pdf, book.pdf ... |
+| [!]    | Any character not listed in brackets     | file[!1]                | file2, file3 ...                             |
+|        |                                          |                         |                                              |
+
+#### Useful characters classes to use within []
+
+| Class     | Meaning                                    |
+| --------- | ------------------------------------------ |
+| [:upper:] | Uppercase character                        |
+| [:lower:] | Lowercase character                        |
+| [:alpha:] | Alphabetic character                       |
+| [:digit:] | Number character                           |
+| [:alnum:] | Alphanumeric character                     |
+| [:space:] | Whitespace character (space, tab, newline) |
+|           |                                            |
+
+#### Wildcards in string comparison:
+
+```
+[[ $STR1 == string-with-wildcards ]]
+[[ $STR1 == file[0-9].txt ]]
+[[ $STR1 == rich* ]]
+
+```
+
+### Regular Expressions
 
 Regular Expressions
 
