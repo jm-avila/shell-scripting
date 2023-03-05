@@ -193,3 +193,17 @@ echo value: "${BASH_REMATCH[2]}"
 | [:alnum:] | Alphanumeric character                     |
 | [:space:] | Whitespace character (space, tab, newline) |
 |           |                                            |
+
+### Filesystem Operators
+
+| File test operators | Description                                          |
+| ------------------- | ---------------------------------------------------- |
+| [ -e $VAR ]         | True if variable holds an existing file or directory |
+| [ -f $VAR ]         | True if variable holds an existing file              |
+| [ -d $VAR ]         | True if variable holds an existing directory         |
+| [ -x $VAR ]         | True if variable is an executable file               |
+| [ -L $VAR ]         | True if variable holds the path of a symlink         |
+| [ -r $VAR ]         | True if variable holds a file that is readable       |
+| [ -w $VAR ]         | True if variable holds a file that is writable       |
+| [ -x $VAR ]         | True if variable holds a file that is executable     |
+|                     |                                                      |
