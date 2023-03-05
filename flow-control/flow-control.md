@@ -207,3 +207,25 @@ echo value: "${BASH_REMATCH[2]}"
 | [ -w $VAR ]         | True if variable holds a file that is writable       |
 | [ -x $VAR ]         | True if variable holds a file that is executable     |
 |                     |                                                      |
+
+## Conditions Without if statement
+
+Execute command on condition
+
+[ condition ] && command
+
+Execute command if condition not meet
+
+[ condition ] || command
+
+Ternary Condition
+
+[ condition ] && command1 || command2
+
+e.g.
+
+```
+[ -f hello.txt ] && echo OK || echo KO
+
+[ -f hello.txt ] && {echo OK; exit 0;} || {echo KO; exit 1;}
+```
