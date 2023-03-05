@@ -133,18 +133,6 @@ Alphabetical Comparison of string:
 | [!]    | Any character not listed in brackets     | file[!1]                | file2, file3 ...                             |
 |        |                                          |                         |                                              |
 
-#### Useful characters classes to use within []
-
-| Class     | Meaning                                    |
-| --------- | ------------------------------------------ |
-| [:upper:] | Uppercase character                        |
-| [:lower:] | Lowercase character                        |
-| [:alpha:] | Alphabetic character                       |
-| [:digit:] | Number character                           |
-| [:alnum:] | Alphanumeric character                     |
-| [:space:] | Whitespace character (space, tab, newline) |
-|           |                                            |
-
 #### Wildcards in string comparison:
 
 ```
@@ -156,6 +144,52 @@ Alphabetical Comparison of string:
 
 ### Regular Expressions
 
-Regular Expressions
+| Symbol | Description                                                         | Example         | Example Matches                                     |
+| ------ | ------------------------------------------------------------------- | --------------- | --------------------------------------------------- |
+| .      | Any sinlge character                                                | bo.k            | book, bo1k ...                                      |
+| \*     | Preceding item must match zero or more times                        | co\*l           | cl, col, cool ...                                   |
+| ^      | Start of the line marker                                            | ^hello          | line starting with hello                            |
+| $      | End of the line marker                                              | $hello          | line ending with hello                              |
+| []     | Any one of characters enclosed in []                                | coo[kl]         | cook or cool                                        |
+| [ - ]  | Any one of characters withing the range                             | file[1-3]       | file1, file2, file3                                 |
+| [^]    | Any character except those enclosed in brackets                     | file[^01234567] | file8, file 9                                       |
+| ?      | Preceding item must match one or zero times                         | colou?r         | color, colour <br> NOT colouur                      |
+| +      | Preceding item must match one or more times                         | file1+          | file1, file11, file111 <br> NOT file                |
+| {n}    | Preceding items must match n times                                  | [0-9]{3}        | Any three digits number: 111, 097 ...               |
+| {n,}   | Minimum number of times the preceding item should match             | [0-9]{3,}       | Any three or more digits number: 111, 1234 ...      |
+| {n,m}  | Minimum and Maximum number of times the preceding item should match | [0-9]{1,3}      | Any number between one and three digits: 1, 12, 123 |
+| \      | Escape special character                                            | \.com           | .com                                                |
+|        |                                                                     |                 |                                                     |
 
-- [[$STR1 =~ $regex]]
+#### Regular Expressions in string comparison:
+
+```
+REGEX="http://.*\.jpg"
+[[ $STR1 =~ $REGEX ]]
+```
+
+#### Regular Expressions in bash:
+
+- $BASH_REMATCH is an array and contains the matches of a regular expression.
+- ${BASH_REMATCH[0]} contains the complete match of the regular expression.
+- The remaining elements contain the matches of () subexpressions. ${BASH_REMATCH[1]} contains the match of the 1st () expression, ${BASH_REMATCH[2]} contains the match of the 2nd () expression, and so on.
+
+```
+text="name=value with spaces"
+[[ $text =~ ^([a-z]+)=(.*)$ ]]
+echo all: "${BASH_REMATCH[0]}"
+echo name: "${BASH_REMATCH[1]}"
+echo value: "${BASH_REMATCH[2]}"
+```
+
+### Useful characters classes to use within []
+
+| Class     | Meaning                                    |
+| --------- | ------------------------------------------ |
+| [:upper:] | Uppercase character                        |
+| [:lower:] | Lowercase character                        |
+| [:alpha:] | Alphabetic character                       |
+| [:digit:] | Number character                           |
+| [:alnum:] | Alphanumeric character                     |
+| [:space:] | Whitespace character (space, tab, newline) |
+|           |                                            |
